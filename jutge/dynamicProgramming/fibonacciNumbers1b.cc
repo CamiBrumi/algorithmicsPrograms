@@ -4,12 +4,11 @@
 using namespace std;
 using ll = long long;
 using VE = vector<ll>;
-int const N = 1000;
+int const N = 1001;
 VE F;
 int m;
 
 ll fib(int n) {
-  //cout << "F[" << n << "] = " << F[n] << endl;
   if (F[n] != -1) {
     return F[n];
   }
@@ -22,5 +21,8 @@ ll fib(int n) {
 int main(){
   F = VE(N, -1);
   int n;
-  while (cin >> n >> m) cout << "fib(" << n << ") (mod " << m << ") = " << fib(n)%m << endl;
+  while (cin >> n >> m) {
+    cout << fib(n)%m << endl;
+    F = VE(N, -1);
+  }
 }

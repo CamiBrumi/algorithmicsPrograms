@@ -4,7 +4,7 @@
 using namespace std;
 using ll = long long;
 using VE = vector<ll>;
-int const N = 1000;
+int const N = 1001;
 //int const MOD = 10e8;
 
 int main(){
