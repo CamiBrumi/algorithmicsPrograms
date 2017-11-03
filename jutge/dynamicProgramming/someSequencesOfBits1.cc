@@ -14,7 +14,7 @@ VE F1, F2, F3;
 ll f1(int n) {
   ll& res = F1[n];
   if (res != -1) return res;
-  if (n <= 1) return res = 1;
+  if (n == 1) return res = 1;
   return res = f2(n-1) + f3(n-1);
 }
 
@@ -22,8 +22,8 @@ ll f1(int n) {
 ll f2(int n) {
   ll& res = F2[n];
   if (res != -1) return res;
-  //if (n == 1) return res = 0;
-  if(n <= 3) return res = 1;
+  if (n == 1) return res = 0;
+  if(n <= 2) return res = 1;
   return res = f2(n-2) + f3(n-2);
 }
 
