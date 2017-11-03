@@ -5,6 +5,7 @@ using VC = vector<char>;
 using VCC = vector<VC>;
 int n, m;
 VCC lab;
+long INF = 1e6;
 
 long long paths(int i, int j) {
   if (i == 0 and j == 0) return 1;
@@ -25,7 +26,6 @@ int main() {
         cin >> lab[i][j];
       }
       long long correctPaths = paths(n-1, m-1);
-      if (correctPaths >= 10e6) cout << "!!!" << endl;
       else cout << correctPaths << endl;
       cin >> n >> m;
   }

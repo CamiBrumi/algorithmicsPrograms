@@ -1,34 +1,44 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-using VE = vector<int>;
+using ll = long long;
+using VE = vector<ll>;
 
-int f1(int n);
-int f2(int n);
-int f3(int n);
+ll f1(int n);
+ll f2(int n);
+ll f3(int n);
 
-// f1 que acaba amb 0
-int f1(int n) {
-  if (n <= 2) return 1;
-  return f2(n-1) + f3(n-1);
+VE F1, F2, F3;
+
+// f1 retorna el número de seqüències que acaben amb 0
+ll f1(int n) {
+  ll& res = F1[n];
+  if (res != -1) return res;
+  if (n <= 1) return res = 1;
+  return res = f2(n-1) + f3(n-1);
 }
 
-// f2 que acaba amb 01
-int f2(int n) {
-  //if (n == 1) return 0;
-  if (n <= 3) return 1; // ja no podrà ser n = 1.
-  return f2(n-2) + f3(n-2);
+// f2 retorna el número de seqüències que acaben amb 01
+ll f2(int n) {
+  ll& res = F2[n];
+  if (res != -1) return res;
+  //if (n == 1) return res = 0;
+  if(n <= 3) return res = 1;
+  return res = f2(n-2) + f3(n-2);
 }
 
-// f3 que acaba amb 11
-int f3(int n) {
-  if (n == 1) return 0;
-  if (n <= 2) return 1; // ja no podrà ser n = 1.
-  return f1(n-2);
+// f3 retorna el número de seqüències que acaben amb 11
+ll f3(int n) {
+  ll& res = F3[n];
+  if (res != -1) return res;
+  if (n == 1) return res = 0;
+  if(n <= 2) return res = 1;
+  return res = f1(n-2);
 }
 
 
 int main() {
+  F1 = F2 = F3 = VE(151, -1);
   //cout << "-1-" << endl;
   int n;
   //cout << "-2-" << endl;
